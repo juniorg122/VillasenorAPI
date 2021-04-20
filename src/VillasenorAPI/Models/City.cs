@@ -10,6 +10,6 @@ namespace VillasenorAPI.Models
         [Required]
         public int CityCode { get; set; }
         [Required]
-        public string CityNamae { get; set; }
+        public string CityName { get; set; }
     }
 }
