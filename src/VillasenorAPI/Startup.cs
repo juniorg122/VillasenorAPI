@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using VillasenorAPI.Data;
+using Microsoft.Data.SqlClient;
 
 namespace VillasenorAPI
 {
@@ -25,10 +26,14 @@ namespace VillasenorAPI
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            var builder = new SqlConnectionStringBuilder();
+            builder.ConnectionString = Configuration.GetConnectionString("VillaSenorConnection");
+            builder.UserID = Configuration["User ID"];
+            builder.Password = Configuration["Password"];
             services.AddDbContext<CityContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("VillaSenorConnection")));
+            options.UseSqlServer(builder.ConnectionString));
             services.AddDbContext<CustomerContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("VillaSenorConnection")));
+            options.UseSqlServer(builder.ConnectionString));
             
             services.AddControllers();
             services.AddScoped<ICityAPIRepo , SqlCityAPIRepo>();
