@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using VillasenorAPI.Data;
 using Microsoft.Data.SqlClient;
+using AutoMapper ; 
 
 namespace VillasenorAPI
 {
@@ -30,12 +31,15 @@ namespace VillasenorAPI
             builder.ConnectionString = Configuration.GetConnectionString("VillaSenorConnection");
             builder.UserID = Configuration["User ID"];
             builder.Password = Configuration["Password"];
+            
             services.AddDbContext<CityContext>(options =>
             options.UseSqlServer(builder.ConnectionString));
             services.AddDbContext<CustomerContext>(options =>
             options.UseSqlServer(builder.ConnectionString));
             
             services.AddControllers();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddScoped<ICustomerAPIRepo , SqlCustomerAPIRepo>();
             services.AddScoped<ICityAPIRepo , SqlCityAPIRepo>();
         }
 

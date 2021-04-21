@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using VillasenorAPI.Models;
 
 namespace VillasenorAPI.Data
@@ -6,6 +7,10 @@ namespace VillasenorAPI.Data
     {
         bool SaveChanges();
 
-        void CreateCustomer(Customer cutomer);
+        IEnumerable<Customer> GetAllCustomers();
+        Customer GetCustomerbyId(int id) ; 
+        void CreateCustomer(Customer customer);
+        void UpdateCustomer(Customer customer);
+        void DeleteCustomer(Customer customer);
     }
 }
