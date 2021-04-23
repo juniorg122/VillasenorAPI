@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using VillasenorAPI.Data;
 using VillasenorAPI.Models;
 using AutoMapper ; 
-using VillasenorAPI.Dtos ; 
+using VillasenorAPI.Dtos ;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace VillasenorAPI.Controllers 
 {
@@ -24,7 +25,7 @@ namespace VillasenorAPI.Controllers
             var cities = _repo.GetAllCities();
             return Ok(_mapper.Map<IEnumerable<CityReadDto>>(cities));
         }
-    [HttpGet("{id}")]
+    [HttpGet("{id}", Name="GetCityById")]
         public ActionResult<CityReadDto> GetCityById(int id )
         {
             var city = _repo.GetCityById(id);
@@ -34,6 +35,59 @@ namespace VillasenorAPI.Controllers
                 return NotFound(); 
             }
             return Ok(_mapper.Map<CityReadDto>(city));
+        }
+    [HttpPost]
+        public ActionResult <CityReadDto> CreateCity(CityCreateDto citycreatdto)
+        {
+            var cityModel = _mapper.Map<City>(citycreatdto);
+            _repo.CreateCity(cityModel);
+            _repo.SaveChanges();
+            var cityReadDto = _mapper.Map<CityReadDto>(cityModel);
+            return CreatedAtRoute(nameof(GetCityById),new {Id = cityReadDto.Id}, cityReadDto);
+        }
+    [HttpPut("{id}")]
+        public ActionResult UpdateCity(int id , CityUpdateDto cityUpdateDto)
+        {
+            var cityModelFromRepo = _repo.GetCityById(id);
+            if(cityModelFromRepo == null)
+            {
+                return NotFound();
+            }
+            _mapper.Map(cityUpdateDto , cityModelFromRepo);
+            _repo.UpdateCity(cityModelFromRepo);
+            _repo.SaveChanges();
+            return NoContent();
+        }
+    [HttpPatch("{id}")]
+        public ActionResult PartialCityUpdate(int id , JsonPatchDocument<CityUpdateDto> patchDoc)
+        {
+            var cityModelFromRepo = _repo.GetCityById(id);
+            if(cityModelFromRepo == null)
+            {
+                return NotFound();
+            }
+            var cityToPatch = _mapper.Map<CityUpdateDto>(cityModelFromRepo);
+            patchDoc.ApplyTo(cityToPatch , ModelState);
+            if(!TryValidateModel(cityToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+            _mapper.Map(cityToPatch,cityModelFromRepo);
+            _repo.UpdateCity(cityModelFromRepo);
+            _repo.SaveChanges();
+            return NoContent();
+        }
+[HttpDelete("{id}")]
+        public ActionResult DeleteCity(int id )
+        {
+            var cityModelFromRepo = _repo.GetCityById(id);
+            if(cityModelFromRepo == null)
+            {
+                return NotFound();
+            }
+            _repo.DeleteCity(cityModelFromRepo);
+            _repo.SaveChanges();
+            return NoContent();
         }
     }
 }

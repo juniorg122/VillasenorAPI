@@ -24,13 +24,19 @@ namespace VillasenorAPI.Data
 
         public IEnumerable<Customer> GetAllCustomers()
         {
+            
             return _customer.customerItems.ToList();
         }
+
+        
+        
 
         public Customer GetCustomerbyId(int id)
         {
             return _customer.customerItems.FirstOrDefault(p => p.Id  == id);
         }
+
+        
 
         public bool SaveChanges()
         {
@@ -40,6 +46,16 @@ namespace VillasenorAPI.Data
         public void UpdateCustomer(Customer customer)
         {
             throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<SellingCustomer> GetAllSellingCustomers()
+        {
+            return _customer.sellingCustomer.ToList();
+        }
+
+        public IEnumerable<BuyingCustomer> GetAllBuyingCustomers()
+        {
+            return _customer.buyingCustomer.ToList();
         }
     }
 }

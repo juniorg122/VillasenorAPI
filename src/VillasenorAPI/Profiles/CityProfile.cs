@@ -9,6 +9,9 @@ namespace VillasenorAPI.Profiles
         public CityProfile()
         {
             CreateMap<City , CityReadDto>();
+            CreateMap<CityCreateDto , City>();
+            CreateMap<CityUpdateDto , City>();
+            CreateMap<City , CityUpdateDto>();
         }
     }
 }

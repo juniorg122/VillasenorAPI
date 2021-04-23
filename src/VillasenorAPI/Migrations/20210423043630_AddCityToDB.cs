@@ -2,7 +2,7 @@
 
 namespace VillasenorAPI.Migrations
 {
-    public partial class InitialCityCreate : Migration
+    public partial class AddCityToDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

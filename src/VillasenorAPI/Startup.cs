@@ -11,7 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using VillasenorAPI.Data;
 using Microsoft.Data.SqlClient;
-using AutoMapper ; 
+using AutoMapper ;
+using Newtonsoft.Json.Serialization;
 
 namespace VillasenorAPI
 {
@@ -37,7 +38,9 @@ namespace VillasenorAPI
             services.AddDbContext<CustomerContext>(options =>
             options.UseSqlServer(builder.ConnectionString));
             
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(s =>{
+                s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<ICustomerAPIRepo , SqlCustomerAPIRepo>();
             services.AddScoped<ICityAPIRepo , SqlCityAPIRepo>();

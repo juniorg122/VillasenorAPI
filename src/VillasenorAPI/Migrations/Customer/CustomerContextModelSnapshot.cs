@@ -55,7 +55,17 @@ namespace VillasenorAPI.Migrations.Customer
 
                     b.ToTable("customerItems");
 
-                    b.HasDiscriminator<string>("customer_type").HasValue("customer_base");
+                    b.HasDiscriminator<string>("customer_type").HasValue("Customer");
+                });
+
+            modelBuilder.Entity("VillasenorAPI.Models.BuyingCustomer", b =>
+                {
+                    b.HasBaseType("VillasenorAPI.Models.Customer");
+
+                    b.Property<string>("CityInterest")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("customer_buying");
                 });
 
             modelBuilder.Entity("VillasenorAPI.Models.SellingCustomer", b =>

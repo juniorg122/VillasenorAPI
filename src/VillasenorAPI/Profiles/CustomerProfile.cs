@@ -9,6 +9,8 @@ namespace VillasenorAPI.Profiles
         public CustomerProfile()
         {
             CreateMap<Customer , CustomerReadDto>();
+            CreateMap<SellingCustomer , SellingCustomerReadDto>();
+            CreateMap<BuyingCustomer , BuyingCustomerReadDto>();
         }
     }
 }

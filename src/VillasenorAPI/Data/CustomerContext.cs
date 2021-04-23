@@ -11,11 +11,12 @@ namespace VillasenorAPI.Data
         }
         public DbSet<Customer> customerItems{get; set;}
         public DbSet<SellingCustomer> sellingCustomer {get; set;}
+        public DbSet<BuyingCustomer> buyingCustomer {get; set ;}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>()
                 .HasDiscriminator<string>("customer_type")
-                .HasValue<Customer>("customer_base")
+                .HasValue<BuyingCustomer>("customer_buying")
                 .HasValue<SellingCustomer>("customer_selling");
         }
     }

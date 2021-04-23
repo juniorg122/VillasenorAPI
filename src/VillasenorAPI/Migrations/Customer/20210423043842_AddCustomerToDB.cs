@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VillasenorAPI.Migrations.Customer
 {
-    public partial class InitialCustomerCreate : Migration
+    public partial class AddCustomerToDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,6 +20,7 @@ namespace VillasenorAPI.Migrations.Customer
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     customer_type = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CityInterest = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SellingStreetAddress = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>

@@ -10,8 +10,8 @@ using VillasenorAPI.Data;
 namespace VillasenorAPI.Migrations.Customer
 {
     [DbContext(typeof(CustomerContext))]
-    [Migration("20210421080312_InitialCustomerCreate")]
-    partial class InitialCustomerCreate
+    [Migration("20210423043842_AddCustomerToDB")]
+    partial class AddCustomerToDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,7 +57,17 @@ namespace VillasenorAPI.Migrations.Customer
 
                     b.ToTable("customerItems");
 
-                    b.HasDiscriminator<string>("customer_type").HasValue("customer_base");
+                    b.HasDiscriminator<string>("customer_type").HasValue("Customer");
+                });
+
+            modelBuilder.Entity("VillasenorAPI.Models.BuyingCustomer", b =>
+                {
+                    b.HasBaseType("VillasenorAPI.Models.Customer");
+
+                    b.Property<string>("CityInterest")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("customer_buying");
                 });
 
             modelBuilder.Entity("VillasenorAPI.Models.SellingCustomer", b =>

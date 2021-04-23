@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using VillasenorAPI.Models;
@@ -14,12 +15,21 @@ namespace VillasenorAPI.Data
         }
         public void CreateCity(City city)
         {
-            throw new System.NotImplementedException();
+            if(city == null)
+            {
+                throw new ArgumentNullException(nameof(city));
+            }
+            _context.CityItems.Add(city);
         }
 
         public void DeleteCity(City city)
         {
-            throw new System.NotImplementedException();
+            if(city == null)
+            {
+                throw new ArgumentNullException(nameof(city));
+
+            }
+            _context.CityItems.Remove(city);
         }
 
         public IEnumerable<City> GetAllCities()
@@ -34,12 +44,12 @@ namespace VillasenorAPI.Data
 
         public bool SaveChanges()
         {
-            throw new System.NotImplementedException();
+            return (_context.SaveChanges() >= 0 );
         }
 
         public void UpdateCity(City city)
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

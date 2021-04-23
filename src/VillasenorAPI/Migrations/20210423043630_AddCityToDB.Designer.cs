@@ -9,8 +9,8 @@ using VillasenorAPI.Data;
 namespace VillasenorAPI.Migrations
 {
     [DbContext(typeof(CityContext))]
-    [Migration("20210421080206_InitialCityCreate")]
-    partial class InitialCityCreate
+    [Migration("20210423043630_AddCityToDB")]
+    partial class AddCityToDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
