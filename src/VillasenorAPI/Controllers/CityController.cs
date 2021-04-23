@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using VillasenorAPI.Data;
+
 using VillasenorAPI.Models;
 using AutoMapper ; 
-using VillasenorAPI.Dtos ;
+
 using Microsoft.AspNetCore.JsonPatch;
+using VillasenorAPI.Dtos.CityDtos;
+using VillasenorAPI.Data.CityData;
 
 namespace VillasenorAPI.Controllers 
 {

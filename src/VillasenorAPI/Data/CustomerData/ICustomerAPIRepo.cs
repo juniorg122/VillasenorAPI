@@ -12,8 +12,9 @@ namespace VillasenorAPI.Data
         IEnumerable<SellingCustomer> GetAllSellingCustomers();
         IEnumerable<BuyingCustomer> GetAllBuyingCustomers();
         Customer GetCustomerbyId(int id) ; 
-        void CreateCustomer(Customer customer);
+        void CreateBuyingCustomer(BuyingCustomer customer);
 
+    void CreateSellingCustomer(SellingCustomer customer);
         
         void UpdateCustomer(Customer customer);
         void DeleteCustomer(Customer customer);

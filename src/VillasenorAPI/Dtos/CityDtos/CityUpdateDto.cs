@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace VillasenorAPI.Dtos
+namespace VillasenorAPI.Dtos.CityDtos
 {
     public class CityUpdateDto
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using VillasenorAPI.Models;
 
-namespace VillasenorAPI.Data
+namespace VillasenorAPI.Data.CityData
 {
     public class SqlCityAPIRepo : ICityAPIRepo
     {

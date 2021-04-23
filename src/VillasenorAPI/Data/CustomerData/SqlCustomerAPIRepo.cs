@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using VillasenorAPI.Models;
@@ -14,8 +15,13 @@ namespace VillasenorAPI.Data
         }
         public void CreateCustomer(Customer customer)
         {
-            throw new System.NotImplementedException();
-        }
+            if(customer == null)
+            {
+                throw new ArgumentNullException(nameof(customer));
+            }
+            
+            
+                  }
 
         public void DeleteCustomer(Customer customer)
         {
@@ -40,7 +46,7 @@ namespace VillasenorAPI.Data
 
         public bool SaveChanges()
         {
-            throw new System.NotImplementedException();
+            return (_customer.SaveChanges() >=0);
         }
 
         public void UpdateCustomer(Customer customer)
@@ -56,6 +62,24 @@ namespace VillasenorAPI.Data
         public IEnumerable<BuyingCustomer> GetAllBuyingCustomers()
         {
             return _customer.buyingCustomer.ToList();
+        }
+
+        public void CreateBuyingCustomer(BuyingCustomer customer)
+        {
+            if(customer == null)
+            {
+                throw new ArgumentNullException(nameof(customer));
+            }
+            _customer.buyingCustomer.Add(customer);
+        }
+
+        public void CreateSellingCustomer(SellingCustomer customer)
+        {
+            if(customer == null)
+            {
+                throw new ArgumentNullException(nameof(customer));
+            }
+            _customer.sellingCustomer.Add(customer);
         }
     }
 }

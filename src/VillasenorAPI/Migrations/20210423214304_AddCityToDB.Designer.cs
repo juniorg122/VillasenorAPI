@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VillasenorAPI.Data;
+using VillasenorAPI.Data.CityData;
 
 namespace VillasenorAPI.Migrations
 {
     [DbContext(typeof(CityContext))]
-    [Migration("20210423043630_AddCityToDB")]
+    [Migration("20210423214304_AddCityToDB")]
     partial class AddCityToDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

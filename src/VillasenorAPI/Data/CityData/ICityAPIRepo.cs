@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using VillasenorAPI.Models;
 
-namespace VillasenorAPI.Data
+namespace VillasenorAPI.Data.CityData
 {
 public interface ICityAPIRepo
 {

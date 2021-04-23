@@ -1,5 +1,6 @@
 using AutoMapper ; 
-using VillasenorAPI.Dtos  ;
+
+using VillasenorAPI.Dtos.CityDtos;
 using VillasenorAPI.Models ; 
 
 namespace VillasenorAPI.Profiles

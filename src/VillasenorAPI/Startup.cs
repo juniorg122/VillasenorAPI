@@ -9,10 +9,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using VillasenorAPI.Data;
+
 using Microsoft.Data.SqlClient;
 using AutoMapper ;
 using Newtonsoft.Json.Serialization;
+using VillasenorAPI.Data.CityData;
+using VillasenorAPI.Data;
 
 namespace VillasenorAPI
 {

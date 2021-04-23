@@ -1,4 +1,4 @@
-namespace VillasenorAPI.Dtos
+namespace VillasenorAPI.Dtos.CityDtos
 {
     public class CityReadDto
     {

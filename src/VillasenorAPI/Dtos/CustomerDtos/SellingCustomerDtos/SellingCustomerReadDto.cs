@@ -1,4 +1,4 @@
-namespace VillasenorAPI.Dtos
+namespace VillasenorAPI.Dtos.CustomerDtos.SellingCustomerDtos
 {
     public class SellingCustomerReadDto : CustomerReadDto
     {

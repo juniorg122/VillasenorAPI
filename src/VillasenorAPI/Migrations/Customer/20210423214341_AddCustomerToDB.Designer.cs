@@ -10,7 +10,7 @@ using VillasenorAPI.Data;
 namespace VillasenorAPI.Migrations.Customer
 {
     [DbContext(typeof(CustomerContext))]
-    [Migration("20210423043842_AddCustomerToDB")]
+    [Migration("20210423214341_AddCustomerToDB")]
     partial class AddCustomerToDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

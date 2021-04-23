@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using VillasenorAPI.Models;
 
-namespace VillasenorAPI.Data
+namespace VillasenorAPI.Data.CityData
 {
     public class CityContext : DbContext
     {
